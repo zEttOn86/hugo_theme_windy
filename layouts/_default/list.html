@@ -1,0 +1,17 @@
+{{ define "main" }}
+
+  {{ $PageContext := . }}
+  {{ if .IsHome }}
+    {{ $PageContext = .Site }}
+  {{ end }}
+  {{ $pages := $PageContext.RegularPages }}
+
+  <div class="flex flex-auto justify-center">
+    <!-- TODO: 画面を小さくしていくとmdサイズより小さくなるとジャンプする -->
+    <section class="flex flex-col w-full md:w-3/5">
+      {{ range (.Paginate $pages).Pages }}
+        {{ .Render "li" }}
+      {{ end }}
+    </section>
+  </div>
+{{ end }}

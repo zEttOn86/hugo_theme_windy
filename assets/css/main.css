@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+JP&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-mono;
+    @apply dark:bg-slate-800 dark:text-slate-300;
+  }
+}
+
+html {
+  font-size: 18px;
+}
+
+.hover-underline-blue:hover {
+  text-decoration-color: #87cefa; /* Tailwind CSSのblue-500の色 */
+}
+
+.article-post a {
+  color: #87cefa;
+  text-decoration: none; /* デフォルトでは下線を表示しない */
+}
+
+.article-post a:hover {
+  text-decoration: underline; /* マウスオーバー時に下線を表示 */
+  text-decoration-color: #87cefa;
+}
+
+.article-post h1,
+.article-post h2,
+.article-post h3 {
+  /* font-weight: bold; */
+  margin-bottom: 1.5rem;
+  padding: 0.4em 0.5em; /*文字の上下 左右の余白*/
+  border-bottom: solid 1px ;/*下線*/
+}
+
+.article-post h4,
+.article-post h5,
+.article-post h6 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding: 0.1em 0.5em; /*文字の上下 左右の余白*/
+    border-bottom: solid 1px; /*下線*/
+}
+
+.article-post h1 {
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+}
