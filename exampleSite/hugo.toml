@@ -1,0 +1,45 @@
+title = 'Hugo Theme Windy'
+baseURL = 'https://example.org/'
+languageCode = 'ja-JP'
+
+
+copyright = "2024. All rights reserved."
+defaultContentLanguage = "en"
+hasCJKLanguage = true
+enableInlineShortcodes = true
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = true
+
+[markup]
+  [markup.highlight]
+    # lineNos = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.cjk]
+        enable = true
+        eastAsianLineBreaks = true
+        escapedSpace = true
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[services]
+  [services.disqus]
+    shortname = 'your-disqus-shortname'
+  [services.googleAnalytics]
+    ID = 'G-MEASUREMENT_ID'
+
+[params]
+    comments = true
+    math = true
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
