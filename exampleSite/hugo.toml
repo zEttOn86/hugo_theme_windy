@@ -1,15 +1,24 @@
 title = 'Hugo Theme Windy'
 baseURL = 'https://example.org/'
+
+copyright = "2024. zEttOn86 - All rights reserved."
 languageCode = 'ja-JP'
-
-
-copyright = "2024. All rights reserved."
 defaultContentLanguage = "en"
 hasCJKLanguage = true
 enableInlineShortcodes = true
 enableRobotsTXT = true
 enableEmoji = true
 enableGitInfo = true
+
+[params]
+  comments = true
+  math = true
+
+[[menu.main]]
+  name = "About"
+  identifier = "about"
+  weight = 2
+  url = "/about"
 
 [markup]
   [markup.highlight]
@@ -35,11 +44,7 @@ enableGitInfo = true
   [services.googleAnalytics]
     ID = 'G-MEASUREMENT_ID'
 
-[params]
-    comments = true
-    math = true
-
 [module]
   [module.hugoVersion]
-    extended = false
+    extended = true
     min = "0.116.0"
