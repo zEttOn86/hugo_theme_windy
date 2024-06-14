@@ -1,10 +1,10 @@
 name = 'Hugo Theme Windy'
-license = 'Apache 2.0'
-licenselink = 'https://github.com/owner/repo/LICENSE'
+license = 'Apache-2.0'
+licenselink = 'https://github.com/zEttOn86/hugo_theme_windy/blob/main/LICENSE'
 description = 'Theme description'
 
 # The home page of the theme, where the source can be found
-homepage = 'https://github.com/owner/repo'
+homepage = 'https://github.com/zEttOn86/hugo_theme_windy/tree/main'
 
 # If you have a running demo of the theme
 demosite = 'https://owner.github.io/repo'
