@@ -14,6 +14,10 @@ enableGitInfo = true
   comments = true
   math = true
 
+  # Show table of contents at the top of your posts (defaults to false)
+  # Alternatively, add this param to post front matter for specific posts
+  toc = true
+
 [[menu.main]]
   name = "About"
   identifier = "about"
