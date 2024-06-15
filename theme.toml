@@ -1,31 +1,25 @@
 name = 'Hugo Theme Windy'
-license = 'Apache 2.0'
-licenselink = 'https://github.com/owner/repo/LICENSE'
-description = 'Theme description'
+license = 'Apache-2.0'
+licenselink = 'https://github.com/zEttOn86/hugo_theme_windy/blob/main/LICENSE'
+description = 'Website based on tailwindcss'
 
 # The home page of the theme, where the source can be found
-homepage = 'https://github.com/owner/repo'
+homepage = 'https://github.com/zEttOn86/hugo_theme_windy/tree/main'
 
-# If you have a running demo of the theme
+# TODO: If you have a running demo of the theme
 demosite = 'https://owner.github.io/repo'
 
 # Taxonomy terms
-tags = ['blog', 'company']
-features = ['some', 'awesome', 'features']
-
-# If the theme has multiple authors
-authors = [
-  {name = 'Name of author', homepage = 'Website of author'},
-  {name = 'Name of author', homepage = 'Website of author'}
-]
+tags = ['blog', 'tailwindcss', 'dark']
+features = [
+  'responsive',
+  'dark mode',
+  'table of contents',
+  'json-ld',
+  'katex',
+  ]
 
 # If the theme has a single author
 [author]
-  name = 'Your name'
-  homepage = 'Your website'
-
-# If porting an existing theme
-[original]
-  author = 'Name of original author'
-  homepage = 'Website of original author'
-  repo = 'https://github.com/owner/repo'
+  name = 'zEttOn86'
+  homepage = 'https://zetton86.github.io/'

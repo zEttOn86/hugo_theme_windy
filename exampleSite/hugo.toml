@@ -1,0 +1,54 @@
+title = 'Hugo Theme Windy'
+baseURL = 'https://example.org/'
+
+copyright = "2024. zEttOn86 - All rights reserved."
+languageCode = 'ja-JP'
+defaultContentLanguage = "en"
+hasCJKLanguage = true
+enableInlineShortcodes = true
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = true
+
+[params]
+  comments = true
+  math = true
+
+  # Show table of contents at the top of your posts (defaults to false)
+  # Alternatively, add this param to post front matter for specific posts
+  toc = true
+
+[[menu.main]]
+  name = "About"
+  identifier = "about"
+  weight = 2
+  url = "/about"
+
+[markup]
+  [markup.highlight]
+    # lineNos = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.cjk]
+        enable = true
+        eastAsianLineBreaks = true
+        escapedSpace = true
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[services]
+  [services.disqus]
+    shortname = 'your-disqus-shortname'
+  [services.googleAnalytics]
+    ID = 'G-MEASUREMENT_ID'
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.116.0"
