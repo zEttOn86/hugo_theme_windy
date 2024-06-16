@@ -7,7 +7,6 @@
   <link rel="icon" href="{{ . | urlize | relURL }}">
 {{ end }}
 {{ partialCached "head/css.html" . }}
-{{ partialCached "head/js.html" . }}
 {{ if .Param "math" }}
   {{ partialCached "math.html" . }}
 {{ end }}

@@ -13,6 +13,7 @@
   <footer class="flex flex-auto justify-center">
     {{ partial "footer.html" . }}
   </footer>
+  {{ partialCached "js.html" . }}
   {{ template "_internal/google_analytics.html" . }}
 </body>
 </html>
