@@ -9,6 +9,7 @@ enableInlineShortcodes = true
 enableRobotsTXT = true
 enableEmoji = true
 enableGitInfo = true
+theme = "hugo_theme_windy"
 
 [params]
   comments = true
