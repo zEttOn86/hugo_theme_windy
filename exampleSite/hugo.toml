@@ -24,6 +24,13 @@ enableGitInfo = true
   # the list of set content will show up on your index page (baseurl).
   contentTypeName = "posts"
 
+  # SEO keywords and description for your site.
+  keywords = "hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+
+  description = "Website based on tailwindcss"
+
+  author = "zEttOn86"
+
 
 [[menu.main]]
   name = "About"
