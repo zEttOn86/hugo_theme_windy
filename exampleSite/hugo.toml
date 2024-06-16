@@ -18,6 +18,8 @@ enableGitInfo = true
   # Alternatively, add this param to post front matter for specific posts
   toc = true
 
+  favicon = "/images/favicon.ico"
+
 [[menu.main]]
   name = "About"
   identifier = "about"
