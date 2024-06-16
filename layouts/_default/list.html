@@ -1,10 +1,14 @@
 {{ define "main" }}
 
   {{ $PageContext := . }}
+  {{ $pages := $PageContext.RegularPages }}
   {{ if .IsHome }}
     {{ $PageContext = .Site }}
+    {{ with .Site.Params.contentTypeName }}
+      {{ $contentTypeName := . }}
+      {{ $pages = where $PageContext.RegularPages "Type" $contentTypeName }}
+    {{ end }}
   {{ end }}
-  {{ $pages := $PageContext.RegularPages }}
 
   <div class="flex flex-auto justify-center">
     <!-- TODO: 画面を小さくしていくとmdサイズより小さくなるとジャンプする -->
