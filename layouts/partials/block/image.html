@@ -10,7 +10,7 @@
   {{- with .Resources.Get $dest -}}
   {{- if eq .MediaType.SubType "svg" -}}
   <figure>
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ .RelPermalink }}"
+    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ .Permalink }}"
       alt="{{ $alt }}" title="{{ $alt }}"
       loading="lazy"
     >
@@ -24,7 +24,7 @@
     {{- with $respSizes -}}
       {{- range $i, $e := . -}}
         {{- if ge $src.Width . -}}
-          {{- if $i }}, {{ end -}}{{- ($src.Resize (print . "x webp " $hint " " $filter) ).RelPermalink }} {{ . }}w
+          {{- if $i }}, {{ end -}}{{- ($src.Resize (print . "x webp " $hint " " $filter) ).Permalink }} {{ . }}w
         {{- end -}}
       {{- end -}}
     {{- end -}}" sizes="{{ $dataSzes }}" />
@@ -32,17 +32,17 @@
     {{- with $respSizes -}}
       {{- range $i, $e := . -}}
         {{- if ge $src.Width . -}}
-          {{- if $i }}, {{ end -}}{{- ($src.Resize (print . "x jpg " $filter) ).RelPermalink }} {{ . }}w
+          {{- if $i }}, {{ end -}}{{- ($src.Resize (print . "x jpg " $filter) ).Permalink }} {{ . }}w
         {{- end -}}
       {{- end -}}
     {{- end -}}" sizes="{{ $dataSzes }}" />
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ $actualImg.RelPermalink }}" width="{{ $src.Width }}" height="{{ $src.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" />
+    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ $actualImg.Permalink }}" width="{{ $src.Width }}" height="{{ $src.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" />
   </picture>
   {{- end -}}
   <!-- or otherwise simply load the URL -->
   {{- else -}}
   <figure>
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ .Params.image | safeURL }}"
+    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ .Params.image | safeURL | absURL }}"
       alt="{{ $alt }}" title="{{ $alt }}"
       loading="lazy"
     >
