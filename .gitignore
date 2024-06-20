@@ -3,6 +3,7 @@ public/
 resources/_gen/
 assets/jsconfig.json
 hugo_stats.json
+exampleSite/resources/_gen/
 
 # Executable may be added to repository
 hugo.exe
