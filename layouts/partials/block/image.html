@@ -7,6 +7,10 @@
   {{- $dest := .Params.image | safeURL -}}
   {{- $dest = path.Join (path.Dir $dest) (path.Base $dest) -}}
 
+  <!-- To remove first "/" when start with "/" -->
+  {{ $dest = strings.TrimPrefix "/" $dest }}
+
+  <!-- Call the following block when to get page resouces -->
   {{- with .Resources.Get $dest -}}
   {{- if eq .MediaType.SubType "svg" -}}
   <figure>
@@ -40,9 +44,10 @@
   </picture>
   {{- end -}}
   <!-- or otherwise simply load the URL -->
+  <!-- call the following function when failed to obtain the resource  -->
   {{- else -}}
   <figure>
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ .Params.image | safeURL | absURL }}"
+    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ $dest | absURL }}"
       alt="{{ $alt }}" title="{{ $alt }}"
       loading="lazy"
     >
