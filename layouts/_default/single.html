@@ -28,10 +28,14 @@
 
       {{ if or .Params.Toc $.Site.Params.Toc }}
         {{ if ne .Params.Toc false }}
-        <section class="prose prose-invert w-full max-w-4xl lg:max-w-5xl mt-6 text-slate-100 article-toc">
-          <h2>{{ T "table_of_contents" }}</h2>
-          <aside>{{ .TableOfContents }}</aside>
-        </section>
+
+          {{ $tocEmpty := "<nav id=\"TableOfContents\"></nav>" }}
+          {{ if ne .TableOfContents $tocEmpty }}
+            <section class="prose prose-invert w-full max-w-4xl lg:max-w-5xl mt-6 text-slate-100 article-toc">
+              <h2>{{ T "table_of_contents" }}</h2>
+              <aside>{{ .TableOfContents }}</aside>
+            </section>
+          {{ end }}
         {{ end }}
       {{ end }}
 
