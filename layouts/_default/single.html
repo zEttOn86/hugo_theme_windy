@@ -28,23 +28,23 @@
 
       {{ if or .Params.Toc $.Site.Params.Toc }}
         {{ if ne .Params.Toc false }}
-        <section class="prose prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+        <section class="prose prose-invert w-full max-w-4xl lg:max-w-5xl mt-6 text-slate-100 article-toc">
           <h2>{{ T "table_of_contents" }}</h2>
           <aside>{{ .TableOfContents }}</aside>
         </section>
         {{ end }}
       {{ end }}
 
-      <article class="article-post mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-invert prose-quoteless post-content">
+      <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-invert prose-quoteless text-slate-300 article-post">
         {{ .Content | safeHTML }}
       </article>
 
-      <div class="md:flex md:flex-row justify-between font-bold">
+      <div class="md:flex md:flex-row justify-between text-slate-100">
         {{with .NextInSection}}
-            <a class="block" href="{{.Permalink}}"> &laquo; {{.Title}}</a>
+            <a class="block hover:font-bold hover:underline" href="{{.Permalink}}"> &laquo; {{.Title}}</a>
         {{end}}
         {{with .PrevInSection}}
-            <a class="block md:text-right" href="{{.Permalink}}">{{.Title}} &raquo;</a>
+            <a class="block md:text-right hover:font-bold hover:underline" href="{{.Permalink}}">{{.Title}} &raquo;</a>
         {{end}}
       </div>
 
