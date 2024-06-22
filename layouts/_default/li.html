@@ -1,7 +1,13 @@
-<article class="flex flex-col mt-6 mx-2 md:mx-0">
+<article class="mx-2 mt-6 flex flex-col md:mx-0">
   <span>
     <i class="fa-solid fa-pencil"></i>
     {{ time.Format "2006-01-02" .PublishDate }}
   </span>
-  <h2 class="mt-1"><a href="{{ .RelPermalink }}" class="text-link-blue hover:underline hover-underline-blue">{{ .LinkTitle }}</a></h2>
+  <h2 class="mt-1">
+    <a
+      href="{{ .RelPermalink }}"
+      class="hover-underline-blue text-link-blue hover:underline"
+      >{{ .LinkTitle }}</a
+    >
+  </h2>
 </article>

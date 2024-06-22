@@ -1,23 +1,44 @@
 <!-- cf. https://github.com/joshbuchea/HEAD -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
 
 {{ hugo.Generator }}
 {{ template "_internal/opengraph.html" . }}
 
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-<meta name="author" content="{{ with .Site.Params.author }}{{ . }}{{ end }}">
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ $.Site.Params.description }}{{ end }}">
-<meta 
+
+<title>
+  {{ if .IsHome }}
+    {{ site.Title }}
+  {{ else }}
+    {{ printf "%s | %s" .Title site.Title }}
+  {{ end }}
+</title>
+<meta name="author" content="{{ with .Site.Params.author }}{{ . }}{{ end }}" />
+<meta
+  name="description"
+  content="{{ with .Description }}
+    {{ . }}
+  {{ else }}
+    {{ $.Site.Params.description }}
+  {{ end }}"
+/>
+<meta
   name="keywords"
-  content="{{ with .Params.keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.keywords }}{{ end }}"
+  content="{{ with .Params.keywords }}
+    {{ delimit . ", " }}
+  {{ else }}
+    {{ $.Site.Params.keywords }}
+  {{ end }}"
 />
 
 {{ with .Site.Params.favicon }}
-  <link rel="icon" href="{{ . | urlize | relURL }}">
+  <link rel="icon" href="{{ . | urlize | relURL }}" />
 {{ end }}
 {{ partialCached "head/css.html" . }}
 {{ if .Param "math" }}
   {{ partialCached "math.html" . }}
 {{ end }}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>

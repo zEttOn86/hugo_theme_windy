@@ -7,50 +7,82 @@
   {{- $dest := .Params.image | safeURL -}}
   {{- $dest = path.Join (path.Dir $dest) (path.Base $dest) -}}
 
+
   <!-- To remove first "/" when start with "/" -->
   {{ $dest = strings.TrimPrefix "/" $dest }}
 
+
   <!-- Call the following block when to get page resouces -->
   {{- with .Resources.Get $dest -}}
-  {{- if eq .MediaType.SubType "svg" -}}
-  <figure>
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ .Permalink }}"
-      alt="{{ $alt }}" title="{{ $alt }}"
-      loading="lazy"
-    >
-  </figure>
+    {{- if eq .MediaType.SubType "svg" -}}
+      <figure>
+        <img
+          class="h-36 w-full object-cover md:h-48 xl:h-60"
+          src="{{ .Permalink }}"
+          alt="{{ $alt }}"
+          title="{{ $alt }}"
+          loading="lazy"
+        />
+      </figure>
+    {{- else -}}
+      {{- $src := . -}}
+      {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
+      {{- $actualImg := $src.Resize (print "640x jpg " $filter) -}}
+      <picture>
+        <source
+          type="image/webp"
+          srcset="
+            {{- with $respSizes -}}
+              {{- range $i, $e := . -}}
+                {{- if ge $src.Width . -}}
+                  {{- if $i }}
+                    ,
+                  {{ end -}}{{- ($src.Resize (print . "x webp " $hint " " $filter) ).Permalink }}
+                  {{ . }}w
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          "
+          sizes="{{ $dataSzes }}"
+        />
+        <source
+          type="image/jpeg"
+          srcset="
+            {{- with $respSizes -}}
+              {{- range $i, $e := . -}}
+                {{- if ge $src.Width . -}}
+                  {{- if $i }}
+                    ,
+                  {{ end -}}{{- ($src.Resize (print . "x jpg " $filter) ).Permalink }}
+                  {{ . }}w
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          "
+          sizes="{{ $dataSzes }}"
+        />
+        <img
+          class="h-36 w-full object-cover md:h-48 xl:h-60"
+          src="{{ $actualImg.Permalink }}"
+          width="{{ $src.Width }}"
+          height="{{ $src.Height }}"
+          alt="{{ $alt }}"
+          title="{{ $alt }}"
+          loading="lazy"
+        />
+      </picture>
+    {{- end -}}
+    <!-- or otherwise simply load the URL -->
+    <!-- call the following function when failed to obtain the resource  -->
   {{- else -}}
-  {{- $src := . -}}
-  {{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
-  {{- $actualImg := $src.Resize (print "640x jpg " $filter) -}}
-  <picture>
-    <source type="image/webp" srcset="
-    {{- with $respSizes -}}
-      {{- range $i, $e := . -}}
-        {{- if ge $src.Width . -}}
-          {{- if $i }}, {{ end -}}{{- ($src.Resize (print . "x webp " $hint " " $filter) ).Permalink }} {{ . }}w
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}" sizes="{{ $dataSzes }}" />
-    <source type="image/jpeg" srcset="
-    {{- with $respSizes -}}
-      {{- range $i, $e := . -}}
-        {{- if ge $src.Width . -}}
-          {{- if $i }}, {{ end -}}{{- ($src.Resize (print . "x jpg " $filter) ).Permalink }} {{ . }}w
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}" sizes="{{ $dataSzes }}" />
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ $actualImg.Permalink }}" width="{{ $src.Width }}" height="{{ $src.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" />
-  </picture>
-  {{- end -}}
-  <!-- or otherwise simply load the URL -->
-  <!-- call the following function when failed to obtain the resource  -->
-  {{- else -}}
-  <figure>
-    <img class="w-full object-cover h-36 md:h-48 xl:h-60" src="{{ $dest | absURL }}"
-      alt="{{ $alt }}" title="{{ $alt }}"
-      loading="lazy"
-    >
-  </figure>
+    <figure>
+      <img
+        class="h-36 w-full object-cover md:h-48 xl:h-60"
+        src="{{ $dest | absURL }}"
+        alt="{{ $alt }}"
+        title="{{ $alt }}"
+        loading="lazy"
+      />
+    </figure>
   {{- end -}}
 {{- end -}}

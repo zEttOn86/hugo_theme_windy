@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ or site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}" class="dark">
-<head>
-  {{ partial "head.html" . }}
-</head>
-<body class="flex flex-col min-h-screen w-full">
-  <header class="flex flex-none justify-center z-10">
-    {{ partial "header.html" . }}
-  </header>
-  <main class="flex flex-auto justify-center">
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer class="flex flex-auto justify-center">
-    {{ partial "footer.html" . }}
-  </footer>
-  {{ partialCached "js.html" . }}
-  {{ template "_internal/google_analytics.html" . }}
-</body>
+<!doctype html>
+<html
+  lang="{{ or site.Language.LanguageCode }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+  class="dark"
+>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="flex min-h-screen w-full flex-col">
+    <header class="z-10 flex flex-none justify-center">
+      {{ partial "header.html" . }}
+    </header>
+    <main class="flex flex-auto justify-center">
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer class="flex flex-auto justify-center">
+      {{ partial "footer.html" . }}
+    </footer>
+    {{ partialCached "js.html" . }}
+    {{ template "_internal/google_analytics.html" . }}
+  </body>
 </html>
