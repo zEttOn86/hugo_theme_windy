@@ -1,10 +1,15 @@
 {{- with resources.Get "css/main.css" }}
   {{- with . | resources.PostCSS }}
     {{- if eq hugo.Environment "development" }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}">
+      <link rel="stylesheet" href="{{ .RelPermalink }}" />
     {{- else }}
       {{- with . | minify | fingerprint | resources.PostProcess }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        <link
+          rel="stylesheet"
+          href="{{ .RelPermalink }}"
+          integrity="{{ .Data.Integrity }}"
+          crossorigin="anonymous"
+        />
       {{- end }}
     {{- end }}
   {{- end }}
@@ -13,10 +18,15 @@
 {{- with resources.Get "css/custom.css" }}
   {{- with . | resources.PostCSS }}
     {{- if eq hugo.Environment "development" }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}">
+      <link rel="stylesheet" href="{{ .RelPermalink }}" />
     {{- else }}
       {{- with . | minify | fingerprint | resources.PostProcess }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        <link
+          rel="stylesheet"
+          href="{{ .RelPermalink }}"
+          integrity="{{ .Data.Integrity }}"
+          crossorigin="anonymous"
+        />
       {{- end }}
     {{- end }}
   {{- end }}
