@@ -20,8 +20,8 @@ html {
   font-weight: 400;
   font-display: swap;
   src: local('Noto Sans Japanese Regular'), local('NotoSansJapanese-Regular'),
-       url('/fonts/noto-sans-jp-v52-japanese_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/noto-sans-jp-v52-japanese_latin-regular.woff') format('woff'); /* Modern Browsers */
+       url('{{ "fonts/noto-sans-jp-v52-japanese_latin-regular.woff2" | absURL }}') format('woff2'), /* Super Modern Browsers */
+       url('{{ "fonts/noto-sans-jp-v52-japanese_latin-regular.woff" | absURL }}') format('woff'); /* Modern Browsers */
 }
 
 .hover-underline-blue:hover {
