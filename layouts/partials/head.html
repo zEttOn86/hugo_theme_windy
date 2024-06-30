@@ -32,7 +32,9 @@
 />
 
 {{ with .Site.Params.favicon }}
-  <link rel="icon" href="{{ . | urlize | relURL }}" />
+  <!-- To remove first "/" when start with "/" -->
+  {{ $dest := strings.TrimPrefix "/" . }}
+  <link rel="icon" href="{{ $dest | urlize | absURL }}" />
 {{ end }}
 <link
   rel="stylesheet"
