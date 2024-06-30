@@ -63,6 +63,10 @@ theme = "hugo_theme_windy"
   [services.googleAnalytics]
     ID = 'G-MEASUREMENT_ID'
 
+[privacy]
+    [privacy.googleAnalytics]
+      disable = true
+
 [module]
   [module.hugoVersion]
     extended = true

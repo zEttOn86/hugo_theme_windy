@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "mono": ['"Noto Sans JP"', '"Noto Sans"', defaultTheme.fontFamily.mono]
+        "mono": ['"Noto Sans JP"', defaultTheme.fontFamily.mono]
       },
       colors: {
         'link-blue': '#87cefa'
