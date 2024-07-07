@@ -74,3 +74,9 @@ theme = "hugo_theme_windy"
   [[module.mounts]]
     source = '../node_modules/mathjax' # Specify a proper directory for node_modules.
     target = 'assets/mathjax'
+  [[module.mounts]]
+    source = '../node_modules/@fortawesome/fontawesome-free'
+    target = 'assets/fontawesome'
+  [[module.mounts]]
+    source = '../node_modules/@fortawesome/fontawesome-free/webfonts'
+    target = 'static/fontawesome/webfonts'

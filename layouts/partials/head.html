@@ -36,8 +36,4 @@
   {{ $dest := strings.TrimPrefix "/" . }}
   <link rel="icon" href="{{ $dest | urlize | absURL }}" />
 {{ end }}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-/>
 {{ partialCached "head/css.html" . }}
