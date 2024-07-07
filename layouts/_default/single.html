@@ -74,3 +74,9 @@
     </div>
   </div>
 {{ end }}
+
+{{ define "loadjs" }}
+  {{ if or .Page.Params.math .Site.Params.math }}
+    {{ partialCached "math.html" . }}
+  {{ end }}
+{{ end }}

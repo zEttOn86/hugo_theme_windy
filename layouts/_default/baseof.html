@@ -6,6 +6,7 @@
 >
   <head>
     {{ partial "head.html" . }}
+    {{ block "head" . }}{{end}}
   </head>
   <body class="flex min-h-screen w-full flex-col">
     <header class="z-10 flex flex-none justify-center">
@@ -18,9 +19,7 @@
       {{ partial "footer.html" . }}
     </footer>
     {{ partialCached "js.html" . }}
-    {{ if .Param "math" }}
-      {{ partialCached "math.html" . }}
-    {{ end }}
+    {{ block "loadjs" . }}{{ end }}
     {{ template "_internal/google_analytics.html" . }}
   </body>
 </html>
