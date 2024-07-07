@@ -3,17 +3,26 @@
   "enableSourceMap" (not hugo.IsProduction)
 }}
 {{- with resources.Get "scss/style.scss" }}
-  {{- with . | resources.ToCSS $opts }}
+  {{- with . | resources.ToCSS $opts | resources.PostCSS }}
     {{- if eq hugo.Environment "development" }}
-      <link rel="stylesheet" href="{{ .Permalink }}" />
+      <link
+        rel="preload"
+        href="{{ .Permalink }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+      />
+      <noscript><link rel="stylesheet" href="{{ .Permalink }}" /></noscript>
     {{- else }}
       {{- with . | minify | fingerprint | resources.PostProcess }}
         <link
-          rel="stylesheet"
+          rel="preload"
           href="{{ .Permalink }}"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'"
           integrity="{{ .Data.Integrity }}"
           crossorigin="anonymous"
         />
+        <noscript><link rel="stylesheet" href="{{ .Permalink }}" /></noscript>
       {{- end }}
     {{- end }}
   {{- end }}
