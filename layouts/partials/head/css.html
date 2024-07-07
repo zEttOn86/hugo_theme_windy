@@ -1,3 +1,24 @@
+{{ $opts := dict
+  "targetPath" "css/style.css"
+  "enableSourceMap" (not hugo.IsProduction)
+}}
+{{- with resources.Get "scss/style.scss" }}
+  {{- with . | resources.ToCSS $opts }}
+    {{- if eq hugo.Environment "development" }}
+      <link rel="stylesheet" href="{{ .Permalink }}" />
+    {{- else }}
+      {{- with . | minify | fingerprint | resources.PostProcess }}
+        <link
+          rel="stylesheet"
+          href="{{ .Permalink }}"
+          integrity="{{ .Data.Integrity }}"
+          crossorigin="anonymous"
+        />
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
 {{- with resources.Get "css/main.css" }}
   {{- with . | resources.PostCSS }}
     {{- if eq hugo.Environment "development" }}
