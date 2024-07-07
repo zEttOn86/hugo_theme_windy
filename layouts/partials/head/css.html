@@ -2,62 +2,8 @@
   "targetPath" "css/style.css"
   "enableSourceMap" (not hugo.IsProduction)
 }}
-{{- with resources.Get "scss/style.scss" }}
-  {{- with . | resources.ToCSS $opts | resources.PostCSS }}
-    {{- if eq hugo.Environment "development" }}
-      <link
-        rel="preload"
-        href="{{ .Permalink }}"
-        as="style"
-        onload="this.onload=null;this.rel='stylesheet'"
-      />
-      <noscript><link rel="stylesheet" href="{{ .Permalink }}" /></noscript>
-    {{- else }}
-      {{- with . | minify | fingerprint | resources.PostProcess }}
-        <link
-          rel="preload"
-          href="{{ .Permalink }}"
-          as="style"
-          onload="this.onload=null;this.rel='stylesheet'"
-          integrity="{{ .Data.Integrity }}"
-          crossorigin="anonymous"
-        />
-        <noscript><link rel="stylesheet" href="{{ .Permalink }}" /></noscript>
-      {{- end }}
-    {{- end }}
-  {{- end }}
-{{- end }}
 
-{{- with resources.Get "css/main.css" }}
-  {{- with . | resources.PostCSS }}
-    {{- if eq hugo.Environment "development" }}
-      <link rel="stylesheet" href="{{ .Permalink }}" />
-    {{- else }}
-      {{- with . | minify | fingerprint | resources.PostProcess }}
-        <link
-          rel="stylesheet"
-          href="{{ .Permalink }}"
-          integrity="{{ .Data.Integrity }}"
-          crossorigin="anonymous"
-        />
-      {{- end }}
-    {{- end }}
-  {{- end }}
-{{- end }}
+{{ partial "block/load-scss.html" (dict "scss" "scss/style.scss" "options" $opts ) }}
 
-{{- with resources.Get "css/custom.css" }}
-  {{- with . | resources.PostCSS }}
-    {{- if eq hugo.Environment "development" }}
-      <link rel="stylesheet" href="{{ .Permalink }}" />
-    {{- else }}
-      {{- with . | minify | fingerprint | resources.PostProcess }}
-        <link
-          rel="stylesheet"
-          href="{{ .Permalink }}"
-          integrity="{{ .Data.Integrity }}"
-          crossorigin="anonymous"
-        />
-      {{- end }}
-    {{- end }}
-  {{- end }}
-{{- end }}
+{{ partial "block/load-css.html" "css/main.css" }}
+{{ partial "block/load-css.html" "css/custom.css" }}

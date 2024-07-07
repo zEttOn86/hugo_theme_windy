@@ -1,0 +1,40 @@
+{{- /*
+  Load scss as css.
+
+  @context {scss} Path to scss file to be loaded.
+  @context {options} Options for converting to css.
+
+  @example:
+  {{ $opts := dict
+  "targetPath" "css/style.css"
+  "enableSourceMap" (not hugo.IsProduction)
+}}
+{{ partial "load-scss.html" (dict "scss" "<path/to/scss/file>" "options" $opts ) }}
+*/}}
+{{ $scss := .scss }}
+{{ $opts := .options }}
+{{- with resources.Get $scss }}
+  {{- with . | resources.ToCSS $opts | resources.PostCSS }}
+    {{- if eq hugo.Environment "development" }}
+      <link
+        rel="preload"
+        href="{{ .Permalink }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+      />
+      <noscript><link rel="stylesheet" href="{{ .Permalink }}" /></noscript>
+    {{- else }}
+      {{- with . | minify | fingerprint | resources.PostProcess }}
+        <link
+          rel="preload"
+          href="{{ .Permalink }}"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'"
+          integrity="{{ .Data.Integrity }}"
+          crossorigin="anonymous"
+        />
+        <noscript><link rel="stylesheet" href="{{ .Permalink }}" /></noscript>
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}

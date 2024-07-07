@@ -1,0 +1,24 @@
+{{- /*
+  Load css.
+
+  @context {css} Path to css file to be loaded.
+
+  @example:{{ partial "load-css.html" <path/to/css/file>
+}}
+*/}}
+{{- with resources.Get . }}
+  {{- with . | resources.PostCSS }}
+    {{- if eq hugo.Environment "development" }}
+      <link rel="stylesheet" href="{{ .Permalink }}" />
+    {{- else }}
+      {{- with . | minify | fingerprint | resources.PostProcess }}
+        <link
+          rel="stylesheet"
+          href="{{ .Permalink }}"
+          integrity="{{ .Data.Integrity }}"
+          crossorigin="anonymous"
+        />
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
