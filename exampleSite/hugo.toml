@@ -39,6 +39,12 @@ theme = "hugo_theme_windy"
   weight = 2
   url = "/about"
 
+[[menu.main]]
+  name = "Archive"
+  identifier = "archives"
+  weight = 4
+  url = "/archives"
+
 [markup]
   [markup.highlight]
     # lineNos = true
