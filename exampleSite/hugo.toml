@@ -81,5 +81,8 @@ theme = "hugo_theme_windy"
     source = '../node_modules/mathjax' # Specify a proper directory for node_modules.
     target = 'assets/mathjax'
   [[module.mounts]]
+    source = '../node_modules/mathjax/es5' # Specify a proper directory for node_modules.
+    target = 'static/mathjax'
+  [[module.mounts]]
     source = '../node_modules/@fortawesome/fontawesome-free'
     target = 'assets/fontawesome'

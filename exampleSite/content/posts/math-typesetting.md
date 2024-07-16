@@ -1,51 +1,71 @@
 ---
-author: Hugo Authors
-title: Math Typesetting
-date: 2019-03-08
-description: A brief guide to setup KaTeX
+title: MathJax Support
+description: Beautiful math in all browsers
+publishdate: 2024-01-01T01:00:00.000Z
+draft: false
+eyecatch: "https://user-images.githubusercontent.com/30958501/121796747-647b7b80-cc56-11eb-8490-52d5899e561c.jpg"
+toc: true
 math: true
-# Photo by <a href="https://unsplash.com/@antoine1003?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Antoine Dautry</a> on <a href="https://unsplash.com/photos/mathematics-computation-05A-kdOH6Hw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-image: "/images/antoine-dautry-05A-kdOH6Hw-unsplash.jpg"
 ---
 
-Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.
-<!--more-->
 
-In this example we will be using [KaTeX](https://katex.org/)
 
-- Create a partial under `/layouts/partials/math.html`
-- Within this partial reference the [Auto-render Extension](https://katex.org/docs/autorender.html) or host these scripts locally.
-- Include the partial in your templates like so:
+## MathJax
 
-```bash
-{{ if .Param "math" }}
-{{ partial "math.html" . }}
-{{ end }}
+[mathjax/MathJax: Beautiful math in all browsers](https://github.com/mathjax/MathJax)
+
+
+
+## Inline Example
+
+### Input
+
+```tex
+Inline $E = mc^2$
 ```
 
-- To enable KaTeX globally set the parameter `math` to `true` in a project's configuration
-- To enable KaTeX on a per page basis include the parameter `math: true` in content files
+### Output
 
-**Note:** Use the online reference of [Supported TeX Functions](https://katex.org/docs/supported.html)
+Inline $E = mc^2$
 
-{{< math.inline >}}
-{{ if or .Page.Params.math .Site.Params.math }}
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-{{ end }}
-{{</ math.inline >}}
 
-## Examples
 
-{{< math.inline >}}
-<p>
-Inline math: \(\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…\)
-</p>
-{{</ math.inline >}}
+## Basic Example
 
-Block math:
+### Input
+
+```tex
 $$
- \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
 $$
+```
+
+### Output
+
+$$
+\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
+$$
+
+
+
+## Math Shortcode
+
+See also [this thread](https://discourse.gohugo.io/t/use-goldmark-mathjax-extension/25721).
+
+### Input
+
+```md
+{{</* math */>}}
+\begin{vmatrix}a & b\\
+c & d
+\end{vmatrix}
+{{</* /math */>}}
+```
+
+### Output
+
+{{< math >}}
+\begin{vmatrix}a & b\\
+c & d
+\end{vmatrix}
+{{< /math >}}
