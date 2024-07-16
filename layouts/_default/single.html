@@ -77,6 +77,6 @@
 
 {{ define "loadjs" }}
   {{ if or .Page.Params.math .Site.Params.math }}
-    {{ partialCached "math.html" . }}
+    {{ partialCached "mathjax.html" . }}
   {{ end }}
 {{ end }}
