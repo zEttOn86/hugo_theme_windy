@@ -9,10 +9,6 @@
   }
 }
 
-html {
-  font-size: 18px;
-}
-
 /* noto-sans-jp-regular - japanese_latin */
 @font-face {
   font-family: 'Noto Sans JP';
@@ -63,6 +59,8 @@ html {
 
 .article-toc a {
   text-decoration: none; /* デフォルトでは下線を表示しない */
+  display: block;
+  border-bottom: solid 1px rgb(241 245 249);
 }
 
 .article-toc a:hover {
@@ -70,18 +68,34 @@ html {
   font-weight: bold; /* マウスオーバー時にBold */
 }
 
+.article-toc > ul {
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  line-height: 2;
+  font-size: 1.2rem;
+}
+
 .article-toc ul {
+  list-style: none;
   margin-top: 0rem;
   margin-bottom: 0rem;
+  padding-left: 1em;
 }
 
 .article-toc li {
   margin-top: 0rem;
   margin-bottom: 0rem;
+  padding-top: 0.5rem; /* 8px */
+  padding-bottom: 0.5rem; /* 8px */
 }
 
 .article-toc li::marker {
   color: rgb(255, 255, 255);
+}
+
+.article-toc li > ul {
+  padding-left: 1em;
+  width: 100%;
 }
 
 .tag-cloud ul {

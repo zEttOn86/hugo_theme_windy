@@ -32,9 +32,9 @@
             {{ $tocEmpty := "<nav id=\"TableOfContents\"></nav>" }}
             {{ if ne .TableOfContents $tocEmpty }}
               <section
-                class="article-toc prose prose-invert mt-6 w-full max-w-4xl text-slate-100 lg:max-w-5xl"
+                class="article-toc w-full max-w-4xl rounded-lg bg-gray-600 p-4 text-slate-100 shadow-md lg:max-w-5xl"
               >
-                <h2>{{ T "table_of_contents" }}</h2>
+                <h2 class="text-2xl">{{ T "table_of_contents" }}</h2>
                 <aside>{{ .TableOfContents }}</aside>
               </section>
             {{ end }}
