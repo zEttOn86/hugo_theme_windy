@@ -1,0 +1,57 @@
+baseURL = 'https://example.org/'
+title = 'Hugo Theme Windy'
+copyright = "2024. zEttOn86 - All rights reserved."
+languageCode = 'ja-JP'
+defaultContentLanguage = "en"
+hasCJKLanguage = true
+enableInlineShortcodes = true
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = true
+theme = "hugo_theme_windy"
+
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.116.0"
+  [[module.mounts]]
+    source = '../node_modules/mathjax' # Specify a proper directory for node_modules.
+    target = 'assets/mathjax'
+  [[module.mounts]]
+    source = '../node_modules/mathjax/es5' # Specify a proper directory for node_modules.
+    target = 'static/mathjax/es5'
+  [[module.mounts]]
+    source = '../node_modules/@fortawesome/fontawesome-free'
+    target = 'assets/fontawesome'
+
+
+[services]
+  [services.disqus]
+    shortname = 'your-disqus-shortname'
+  [services.googleAnalytics]
+    ID = 'G-MEASUREMENT_ID'
+
+
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+
+
+[markup]
+  [markup.highlight]
+    # lineNos = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.cjk]
+        enable = true
+        eastAsianLineBreaks = true
+        escapedSpace = true
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]

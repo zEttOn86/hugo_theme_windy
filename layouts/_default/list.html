@@ -12,7 +12,7 @@
 
   <div class="flex flex-auto justify-center">
     <!-- TODO: 画面を小さくしていくとmdサイズより小さくなるとジャンプする -->
-    <section class="flex w-full flex-col md:w-3/5">
+    <section class="flex w-full flex-col md:w-3/5 lg:max-w-5xl">
       {{ range $pages }}
         {{ .Render "li" }}
       {{ end }}

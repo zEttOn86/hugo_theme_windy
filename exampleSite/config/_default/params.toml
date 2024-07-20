@@ -1,0 +1,19 @@
+comments = true
+math = true
+
+# Show table of contents at the top of your posts (defaults to false)
+# Alternatively, add this param to post front matter for specific posts
+toc = true
+
+favicon = "/images/favicon.ico"
+
+# dir name of your blog content (default is `content/posts`).
+# the list of set content will show up on your index page (baseurl).
+contentTypeName = "posts"
+
+# SEO keywords and description for your site.
+keywords = "hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+
+description = "Website based on tailwindcss"
+
+author = "zEttOn86"

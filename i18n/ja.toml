@@ -1,0 +1,12 @@
+table_of_contents = "目次"
+
+[404]
+go_back_home = "Go back home"
+sorry = "Sorry, we couldn't find the page you're looking for."
+page_not_found = "Page not found"
+
+[archives]
+page_title = "Archive Page"
+tag_section_title = "Tags"
+category_section_title = "Categories"
+post_section_title = "All posts"
