@@ -16,6 +16,12 @@ theme = "hugo_theme_windy"
     extended = true
     min = "0.116.0"
   [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
     source = '../node_modules/mathjax' # Specify a proper directory for node_modules.
     target = 'assets/mathjax'
   [[module.mounts]]
