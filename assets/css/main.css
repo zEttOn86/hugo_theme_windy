@@ -57,6 +57,21 @@
   line-height: 2rem; /* 32px */
 }
 
+.article-post blockquote {
+  border-left: 4px solid rgb(203, 213, 225);
+  padding: 0 20px;
+  font-style: italic;
+  color: rgb(203, 213, 225);
+}
+
+.article-post blockquote p:before {
+  content:'';
+}
+
+.article-post blockquote p:after {
+  content:'';
+}
+
 .article-toc a {
   text-decoration: none; /* デフォルトでは下線を表示しない */
   display: block;
