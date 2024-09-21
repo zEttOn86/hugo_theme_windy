@@ -72,6 +72,13 @@
   content:'';
 }
 
+.article-post mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding:1.0rem 0.2rem;
+}
+
 .article-toc a {
   text-decoration: none; /* デフォルトでは下線を表示しない */
   display: block;
