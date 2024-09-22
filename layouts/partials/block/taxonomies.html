@@ -2,30 +2,35 @@
   <ul class="flex flex-row flex-wrap text-slate-300">
     {{ if .Params.categories }}
       {{ range .Params.categories }}
-        <li>
-          <a
-            href="{{ (urlize (printf "categories/%s" . )) | relLangURL }}/"
-            class="mr-2 rounded border border-emerald-800 bg-emerald-800 px-2 py-1 text-sm text-slate-50"
-          >
-            {{ . }}
-          </a>
-        </li>
+        {{ if . }}
+          <!-- Exclude empty string from rendering. (e.g. "") -->
+          <li>
+            <a
+              href="{{ (urlize (printf "categories/%s" . )) | relLangURL }}/"
+              class="mr-2 rounded border border-emerald-800 bg-emerald-800 px-2 py-1 text-sm text-slate-50"
+            >
+              {{ . }}
+            </a>
+          </li>
+        {{ end }}
       {{ end }}
     {{ end }}
     {{ if .Params.tags }}
       {{ range .Params.tags }}
-        <li>
-          <a
-            href="{{ (urlize (printf "tags/%s" . )) | relLangURL }}/"
-            class="mr-2 flex flex-row py-1 text-sm hover:font-bold"
-          >
-            <i class="fa fa-tags"></i
-            ><span
-              class="hover-underline-blue ml-1 text-link-blue hover:underline"
-              >{{ . }}</span
+        {{ if . }}
+          <li>
+            <a
+              href="{{ (urlize (printf "tags/%s" . )) | relLangURL }}/"
+              class="mr-2 flex flex-row py-1 text-sm hover:font-bold"
             >
-          </a>
-        </li>
+              <i class="fa fa-tags"></i
+              ><span
+                class="hover-underline-blue ml-1 text-link-blue hover:underline"
+                >{{ . }}</span
+              >
+            </a>
+          </li>
+        {{ end }}
       {{ end }}
     {{ end }}
   </ul>
