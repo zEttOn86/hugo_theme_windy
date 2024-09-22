@@ -79,6 +79,10 @@
   padding:1.0rem 0.2rem;
 }
 
+.article-post p code {
+  color: rgb(230, 230, 230);
+}
+
 .article-toc a {
   text-decoration: none; /* デフォルトでは下線を表示しない */
   display: block;
@@ -226,6 +230,7 @@
 
 .highlight {
   position: relative;
+  font-size: 100%;
 }
 
 .highlight .icon-tabler.icon-tabler-check {
