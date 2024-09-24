@@ -24,62 +24,75 @@
   text-decoration-color: #87cefa; /* Tailwind CSSのblue-500の色 */
 }
 
-.article-post a {
+.article-post img {
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  overflow:visible;
+  transition: transform 0.3s ease-in-out;
+}
+
+.article-post img.hovered {
+  transform: scale(1.5); /* 1.5倍に拡大 */
+  z-index: 100; /* 他の要素より前に表示 */
+}
+
+.article-content a {
   color: #87cefa;
   text-decoration: none; /* デフォルトでは下線を表示しない */
 }
 
-.article-post a:hover {
+.article-content a:hover {
   text-decoration: underline; /* マウスオーバー時に下線を表示 */
   text-decoration-color: #87cefa;
 }
 
-.article-post h1,
-.article-post h2,
-.article-post h3 {
+.article-content h1,
+.article-content h2,
+.article-content h3 {
   /* font-weight: bold; */
   margin-bottom: 1.5rem;
   padding: 0.4em 0.5em; /*文字の上下 左右の余白*/
   border-bottom: solid 1px ;/*下線*/
 }
 
-.article-post h4,
-.article-post h5,
-.article-post h6 {
+.article-content h4,
+.article-content h5,
+.article-content h6 {
     font-weight: 700;
     margin-bottom: 1.5rem;
     padding: 0.1em 0.5em; /*文字の上下 左右の余白*/
     border-bottom: solid 1px; /*下線*/
 }
 
-.article-post h1 {
+.article-content h1 {
   font-size: 1.5rem; /* 24px */
   line-height: 2rem; /* 32px */
 }
 
-.article-post blockquote {
+.article-content blockquote {
   border-left: 4px solid rgb(203, 213, 225);
   padding: 0 20px;
   font-style: italic;
   color: rgb(203, 213, 225);
 }
 
-.article-post blockquote p:before {
+.article-content blockquote p:before {
   content:'';
 }
 
-.article-post blockquote p:after {
+.article-content blockquote p:after {
   content:'';
 }
 
-.article-post mjx-container {
+.article-content mjx-container {
   overflow-x: auto;
   overflow-y: hidden;
   max-width: 100%;
   padding:1.0rem 0.2rem;
 }
 
-.article-post p code {
+.article-content p code {
   color: rgb(230, 230, 230);
 }
 
