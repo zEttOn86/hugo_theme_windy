@@ -24,15 +24,14 @@
   text-decoration-color: #87cefa; /* Tailwind CSSのblue-500の色 */
 }
 
-.article-post img {
+.article-content img {
   width: auto;
   height: auto;
   cursor: pointer;
-  overflow:visible;
   transition: transform 0.3s ease-in-out;
 }
 
-.article-post img.hovered {
+.article-content img.hovered {
   transform: scale(1.5); /* 1.5倍に拡大 */
   z-index: 100; /* 他の要素より前に表示 */
 }

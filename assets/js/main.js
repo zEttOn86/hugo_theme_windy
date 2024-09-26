@@ -26,6 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Remove the 'hovered' class from all images except the clicked one.
       for (const img of images) {
+        if (img === this) {
+          // Skip if it's the same as this (the clicked img).
+          continue;
+        }
+
         if(img.classList.contains('hovered')){
           img.classList.toggle('hovered');
 
@@ -49,4 +54,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
