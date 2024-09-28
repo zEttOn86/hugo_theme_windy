@@ -16,6 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+var isZoomed = false; // false: contracted state, true: expaned state
+function toggleOverflowState(articleMain){
+  // Toggle between overflow-visible and overflow-hidden.
+  if (articleMain.classList.contains('overflow-hidden')) {
+    articleMain.classList.remove('overflow-hidden');
+    articleMain.classList.add('overflow-visible');
+    console.log("overflow-visible");
+  }
+  else {
+    articleMain.classList.remove('overflow-visible');
+    articleMain.classList.add('overflow-hidden');
+    console.log("overflow-hidden");
+  }
+}
+
 // To set image animation when click event occured
 document.addEventListener('DOMContentLoaded', function () {
   var images = document.getElementsByTagName('img');
@@ -25,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     images[i].addEventListener('click', function() {
 
       // Remove the 'hovered' class from all images except the clicked one.
+      var isAlreadyZoomed = false;
       for (const img of images) {
         if (img === this) {
           // Skip if it's the same as this (the clicked img).
@@ -33,24 +49,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if(img.classList.contains('hovered')){
           img.classList.toggle('hovered');
-
-          articleMain.classList.remove('overflow-visible');
-          articleMain.classList.add('overflow-hidden');
+          isZoomed = !isZoomed;
+          isAlreadyZoomed = true;  // Another image had been expanded
         }
       }
 
-      // Toggle between overflow-visible and overflow-hidden.
-      if (articleMain.classList.contains('overflow-hidden')) {
-        articleMain.classList.remove('overflow-hidden');
-        articleMain.classList.add('overflow-visible');
-      } 
-      else {
-        articleMain.classList.remove('overflow-visible');
-        articleMain.classList.add('overflow-hidden');
+      // If the image is being contracted and
+      // another image is also being contracted.
+      if(isZoomed == false && isAlreadyZoomed == false){
+        toggleOverflowState(articleMain);
       }
 
       // Add hovered class which was clicked
       this.classList.toggle('hovered');
+      isZoomed = !isZoomed
     });
+
+    images[i].addEventListener("transitionend", function (){
+
+      // Only perform when image is contracted
+      if(isZoomed==true){
+        return;
+      }
+
+      toggleOverflowState(articleMain);
+    });
+
   }
 });
